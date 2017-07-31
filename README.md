@@ -2,7 +2,7 @@
 
 This is my first independently created Android App. It is a children's app that is supposed to go through the English alphabet in an entertaining way. 
 
-![Application Screenshot of Letter B](pics/AlphabeticalScreenShot.png =300x)
+<img src="pics/AlphabeticalScreenShot.png" alt="Application Screenshot of Letter B" width="300">
 
 ## Implementing Soon
 * ViewPager - This will let kids swipe through the alphabet.
