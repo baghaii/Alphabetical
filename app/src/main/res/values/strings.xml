@@ -1,33 +1,5 @@
 <resources>
   <string name="app_name">Alphabetical</string>
-
-  <string name="letter_a">Letter A</string>
-  <string name="letter_b">Letter B</string>
-  <string name="letter_c">Letter C</string>
-  <string name="letter_d">Letter D</string>
-  <string name="letter_e">Letter E</string>
-  <string name="letter_f">Letter F</string>
-  <string name="letter_g">Letter G</string>
-  <string name="letter_h">Letter H</string>
-  <string name="letter_i">Letter I</string>
-  <string name="letter_j">Letter J</string>
-  <string name="letter_k">Letter K</string>
-  <string name="letter_l">Letter L</string>
-  <string name="letter_m">Letter M</string>
-  <string name="letter_n">Letter N</string>
-  <string name="letter_o">Letter O</string>
-  <string name="letter_p">Letter P</string>
-  <string name="letter_q">Letter Q</string>
-  <string name="letter_r">Letter R</string>
-  <string name="letter_s">Letter S</string>
-  <string name="letter_t">Letter T</string>
-  <string name="letter_u">Letter U</string>
-  <string name="letter_v">Letter V</string>
-  <string name="letter_w">Letter W</string>
-  <string name="letter_x">Letter X</string>
-  <string name="letter_y">Letter Y</string>
-  <string name="letter_z">Letter Z</string>
-
   <string name="previous">Previous Letter</string>
   <string name="next">Next Letter</string>
 </resources>
