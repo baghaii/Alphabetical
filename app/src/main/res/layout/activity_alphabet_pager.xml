@@ -21,7 +21,7 @@
     android:layout_gravity="center_vertical"
     android:src="@drawable/ic_keyboard_arrow_left"
     android:contentDescription="@string/previous"
-    android:visibility="visible"/>
+    android:visibility="invisible"/>
 
   <ImageButton
     android:id="@+id/next"
