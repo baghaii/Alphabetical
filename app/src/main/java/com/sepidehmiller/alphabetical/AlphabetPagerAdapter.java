@@ -18,14 +18,16 @@ public class AlphabetPagerAdapter extends PagerAdapter {
 
   public AlphabetPagerAdapter(Context context) {
     mContext = context;
-    mAlphabet = new String[]{"A","B","C","D","E"};
+    mAlphabet = new String[]{"A","B","C","D","E","F","G",
+        "H","I","J","K","L","M","N","O","P","Q","R","S","T",
+        "U","V","W","X","Y","Z"};
   }
 
   @Override
   public Object instantiateItem(ViewGroup container, int position) {
     String alphabet = mAlphabet[position];
     LayoutInflater inflater = LayoutInflater.from(mContext);
-    TextView layout = (TextView) inflater.inflate(R.layout.alphabet, container, false);
+    TextView layout = (TextView) inflater.inflate(R.layout.textview_alphabet, container, false);
     layout.setText(alphabet);
     container.addView(layout);
     return layout;

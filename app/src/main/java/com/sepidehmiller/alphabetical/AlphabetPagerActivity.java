@@ -7,6 +7,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Adapter;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import static android.os.Build.VERSION_CODES.M;
@@ -17,6 +19,7 @@ import static android.os.Build.VERSION_CODES.M;
 
 public class AlphabetPagerActivity extends AppCompatActivity {
   private ViewPager mViewPager;
+  private ImageButton mPrevButton, mNextButton;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +30,10 @@ public class AlphabetPagerActivity extends AppCompatActivity {
     final AlphabetPagerAdapter adapter = new AlphabetPagerAdapter(this);
     mViewPager.setAdapter(adapter);
 
-    View previous = findViewById(R.id.previous);
-    View next = findViewById(R.id.next);
+    mPrevButton = (ImageButton) findViewById(R.id.previous);
+    mNextButton = (ImageButton) findViewById(R.id.next);
 
-    previous.setOnClickListener(new View.OnClickListener() {
+    mPrevButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
         int item = mViewPager.getCurrentItem();
@@ -41,7 +44,7 @@ public class AlphabetPagerActivity extends AppCompatActivity {
       }
     });
 
-    next.setOnClickListener(new View.OnClickListener() {
+    mNextButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
         int item = mViewPager.getCurrentItem();
@@ -52,5 +55,17 @@ public class AlphabetPagerActivity extends AppCompatActivity {
       }
     });
 
+    mViewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+      @Override
+      public void onPageSelected(int position) {
+        super.onPageSelected(position);
+        if (position == 0) {
+          mPrevButton.setVisibility(View.INVISIBLE);
+        } else {
+          mPrevButton.setVisibility(View.VISIBLE);
+        }
+      }
+    });
   }
+
 }
