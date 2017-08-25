@@ -1,5 +1,6 @@
 package com.sepidehmiller.alphabetical;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -48,10 +49,17 @@ public class AlphabetPagerActivity extends AppCompatActivity {
       @Override
       public void onClick(View view) {
         int item = mViewPager.getCurrentItem();
+
+        //Start the Finish Activity if on the last letter.
+        if (item == adapter.getCount() - 1) {
+          startFinishActivity();
+        }
+
         if (item < adapter.getCount() - 1) {
           item = item + 1;
           mViewPager.setCurrentItem(item, true);
         }
+
       }
     });
 
@@ -66,6 +74,13 @@ public class AlphabetPagerActivity extends AppCompatActivity {
         }
       }
     });
+  }
+
+  //TODO: Add a way to swipe to finish activity.
+
+  private void startFinishActivity() {
+    Intent i = new Intent(AlphabetPagerActivity.this, AlphabetFinishActivity.class);
+    startActivity(i);
   }
 
 }
