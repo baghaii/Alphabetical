@@ -64,6 +64,7 @@ public class AlphabetPagerActivity extends AppCompatActivity {
     });
 
     mViewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+
       @Override
       public void onPageSelected(int position) {
         super.onPageSelected(position);
@@ -73,10 +74,18 @@ public class AlphabetPagerActivity extends AppCompatActivity {
           mPrevButton.setVisibility(View.VISIBLE);
         }
       }
+
+
+      @Override
+      public void onPageScrollStateChanged(int state) {
+        super.onPageScrollStateChanged(state);
+
+        if (adapter.getCount() - 1 == mViewPager.getCurrentItem() && state == 1) {
+          startFinishActivity();
+        }
+      }
     });
   }
-
-  //TODO: Add a way to swipe to finish activity.
 
   private void startFinishActivity() {
     Intent i = new Intent(AlphabetPagerActivity.this, AlphabetFinishActivity.class);
