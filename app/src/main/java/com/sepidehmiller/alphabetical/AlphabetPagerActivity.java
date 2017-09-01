@@ -87,9 +87,19 @@ public class AlphabetPagerActivity extends AppCompatActivity {
     });
   }
 
+  @Override
+  protected void onResume() {
+    super.onResume();
+    if (mViewPager != null) {
+      mViewPager.setVisibility(View.VISIBLE);
+    }
+  }
+
   private void startFinishActivity() {
     Intent i = new Intent(AlphabetPagerActivity.this, AlphabetFinishActivity.class);
     startActivity(i);
+    mViewPager.setVisibility(View.INVISIBLE);
+    mViewPager.setCurrentItem(0,true);
   }
 
 }
