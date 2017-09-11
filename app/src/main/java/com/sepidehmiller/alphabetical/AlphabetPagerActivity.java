@@ -21,14 +21,17 @@ import static android.os.Build.VERSION_CODES.M;
 public class AlphabetPagerActivity extends AppCompatActivity {
   private ViewPager mViewPager;
   private ImageButton mPrevButton, mNextButton;
+  private AlphabetSoundPlayer mSoundPlayer;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_alphabet_pager);
 
+    mSoundPlayer = new AlphabetSoundPlayer(getApplicationContext());
+
     mViewPager = (ViewPager) findViewById(R.id.activity_alphabet_pager_view_pager);
-    final AlphabetPagerAdapter adapter = new AlphabetPagerAdapter(this);
+    final AlphabetPagerAdapter adapter = new AlphabetPagerAdapter(this, mSoundPlayer);
     mViewPager.setAdapter(adapter);
 
     mPrevButton = (ImageButton) findViewById(R.id.previous);
@@ -79,7 +82,7 @@ public class AlphabetPagerActivity extends AppCompatActivity {
       @Override
       public void onPageScrollStateChanged(int state) {
         super.onPageScrollStateChanged(state);
-
+        //Something here is behaving strangely. If you swipe back on last page, it still finishes.
         if (adapter.getCount() - 1 == mViewPager.getCurrentItem() && state == 1) {
           startFinishActivity();
         }

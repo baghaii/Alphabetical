@@ -15,10 +15,12 @@ import android.widget.TextView;
 public class AlphabetPagerAdapter extends PagerAdapter {
 
   private final Context mContext;
+  private AlphabetSoundPlayer mSoundPlayer;
   private String[] mAlphabet;
 
-  public AlphabetPagerAdapter(Context context) {
+  public AlphabetPagerAdapter(Context context, AlphabetSoundPlayer soundPlayer) {
     mContext = context;
+    mSoundPlayer = soundPlayer;
     mAlphabet = new String[]{"A","B","C","D","E","F","G",
         "H","I","J","K","L","M","N","O","P","Q","R","S","T",
         "U","V","W","X","Y","Z"};
@@ -27,13 +29,28 @@ public class AlphabetPagerAdapter extends PagerAdapter {
   @Override
   public Object instantiateItem(ViewGroup container, int position) {
     String alphabet = mAlphabet[position];
+
     LayoutInflater inflater = LayoutInflater.from(mContext);
     TextView layout = (TextView) inflater.inflate(R.layout.textview_alphabet, container, false);
     layout.setText(alphabet);
 
     Typeface face = Typeface.createFromAsset(mContext.getAssets(), "fonts/ChalkboardSE.ttc");
     layout.setTypeface(face);
+
+    final int i = position;
+    layout.setOnClickListener(new View.OnClickListener() {
+
+      //TODO: fix this so we can get the letter sound
+      @Override
+      public void onClick(View view) {
+
+        mSoundPlayer.play(mSoundPlayer.getSounds().get(i));
+
+      }
+    });
+
     container.addView(layout);
+
     return layout;
   }
 
