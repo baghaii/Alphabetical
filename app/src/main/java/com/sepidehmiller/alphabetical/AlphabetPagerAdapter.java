@@ -40,7 +40,6 @@ public class AlphabetPagerAdapter extends PagerAdapter {
     final int i = position;
     layout.setOnClickListener(new View.OnClickListener() {
 
-      //TODO: fix this so we can get the letter sound
       @Override
       public void onClick(View view) {
 
