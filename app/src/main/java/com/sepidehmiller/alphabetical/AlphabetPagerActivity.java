@@ -83,7 +83,8 @@ public class AlphabetPagerActivity extends AppCompatActivity {
       public void onPageScrollStateChanged(int state) {
         super.onPageScrollStateChanged(state);
         //TODO: Something here is behaving strangely. If you swipe back on last page, it still finishes.
-        if (adapter.getCount() - 1 == mViewPager.getCurrentItem() && state == 1) {
+        if (adapter.getCount() - 1 == mViewPager.getCurrentItem() &&
+            state == ViewPager.SCROLL_STATE_DRAGGING) {
           startFinishActivity();
         }
       }
