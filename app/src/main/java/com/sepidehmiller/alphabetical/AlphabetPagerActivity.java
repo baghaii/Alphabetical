@@ -2,17 +2,11 @@ package com.sepidehmiller.alphabetical;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Adapter;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
-import static android.os.Build.VERSION_CODES.M;
 
 /**
  * Created by baghaii on 7/26/17.
@@ -68,8 +62,13 @@ public class AlphabetPagerActivity extends AppCompatActivity {
 
     mViewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
 
+      boolean dragLastPage;
+
       @Override
       public void onPageSelected(int position) {
+
+        //If a page is selected, then we are not dragging the last page.
+        dragLastPage = false;
         super.onPageSelected(position);
         if (position == 0) {
           mPrevButton.setVisibility(View.INVISIBLE);
@@ -81,10 +80,14 @@ public class AlphabetPagerActivity extends AppCompatActivity {
 
       @Override
       public void onPageScrollStateChanged(int state) {
-        super.onPageScrollStateChanged(state);
-        //TODO: Something here is behaving strangely. If you swipe back on last page, it still finishes.
+
         if (adapter.getCount() - 1 == mViewPager.getCurrentItem() &&
             state == ViewPager.SCROLL_STATE_DRAGGING) {
+          dragLastPage = true;
+        }
+
+        //If we dragged the last page and didn't end up selecting a different page, then finish
+        if (dragLastPage && state == ViewPager.SCROLL_STATE_IDLE) {
           startFinishActivity();
         }
       }
@@ -104,6 +107,7 @@ public class AlphabetPagerActivity extends AppCompatActivity {
     startActivity(i);
     mViewPager.setVisibility(View.INVISIBLE);
     mViewPager.setCurrentItem(0,true);
+
   }
 
 }
