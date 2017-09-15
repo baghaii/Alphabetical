@@ -22,6 +22,6 @@ public class AlphabetFinishActivity extends AppCompatActivity {
       }
     });
 
-
   }
+
 }
