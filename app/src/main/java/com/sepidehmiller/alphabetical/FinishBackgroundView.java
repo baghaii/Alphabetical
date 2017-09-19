@@ -13,25 +13,27 @@ import android.view.View;
 
 public class FinishBackgroundView extends View {
 
-  Paint mRedFill, mBlueFill;
-  int mBallX, mBallY, mBallY2, mBallRadius;
+  Paint mRedRing, mGreenRing, mGrayRing;
+  int mBallX, mBallY, mBallY2, mBallRadius, mChangingRadius, mDeltaY1, mDeltaY2;
 
   {
-    mRedFill = new Paint();
-    mRedFill.setColor(Color.RED);
-    mRedFill.setStyle(Paint.Style.FILL);
-    mRedFill.setStrokeWidth(10);
+    mRedRing = new Paint();
+    mRedRing.setColor(Color.RED);
+    mRedRing.setStyle(Paint.Style.STROKE);
+    mRedRing.setStrokeWidth(50);
 
-    mBlueFill = new Paint();
-    mBlueFill.setColor(Color.BLUE);
-    mBlueFill.setStyle(Paint.Style.FILL);
-    mBlueFill.setStrokeWidth(10);
+    mGreenRing = new Paint();
+    mGreenRing.setColor(Color.GREEN);
+    mGreenRing.setStyle(Paint.Style.STROKE);
+    mGreenRing.setStrokeWidth(50);
 
-    mBallX = 200;
-    mBallY = 200;
-    mBallY2 = mBallY;
+    mGrayRing = new Paint();
+    mGrayRing.setColor(Color.LTGRAY);
+    mGrayRing.setStyle(Paint.Style.STROKE);
+    mGrayRing.setStrokeWidth(50);
 
-    mBallRadius = 100;
+    mChangingRadius = 100;
+
   }
 
   public FinishBackgroundView(Context context) {
@@ -49,25 +51,30 @@ public class FinishBackgroundView extends View {
   @Override
   protected void onDraw(Canvas canvas) {
     super.onDraw(canvas);
-
     int i = 1;
-    int ballThreshhold = canvas.getHeight()/3;
+    int xCenter;
+    int yCenter;
 
-    while (mBallX * (i + 1) < canvas.getWidth() - mBallRadius) {
-      canvas.drawCircle(mBallX * i, mBallY, mBallRadius, mRedFill);
-      canvas.drawCircle(mBallX * (i + 1), mBallY2, mBallRadius, mBlueFill);
-      i = i + 2;
+
+    xCenter = canvas.getWidth()/2;
+    yCenter = canvas.getHeight()/2;
+
+
+    canvas.drawCircle(xCenter, yCenter, mChangingRadius, mRedRing);
+
+    if (mChangingRadius >= 200) {
+      canvas.drawCircle(xCenter, yCenter, mChangingRadius - 100, mGrayRing);
+
+      if (mChangingRadius >= 250) {
+        canvas.drawCircle(xCenter, yCenter, mChangingRadius - 200, mGreenRing);
+      }
+
     }
 
-    if (mBallY2 < canvas.getHeight() - mBallRadius) {
-      if (mBallY < canvas.getHeight() - mBallRadius) {
-        mBallY = mBallY + 5;
-      }
-      if (mBallY > ballThreshhold) {
-        mBallY2 = mBallY2 + 5;
-      }
+    mChangingRadius = mChangingRadius + 10;
+
+    if (mChangingRadius < xCenter) {
       invalidate();
     }
-
   }
 }
