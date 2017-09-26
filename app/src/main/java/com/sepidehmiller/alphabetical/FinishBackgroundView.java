@@ -14,23 +14,25 @@ import android.view.View;
 public class FinishBackgroundView extends View {
 
   Paint mRedRing, mGreenRing, mGrayRing;
-  int mBallX, mBallY, mBallY2, mBallRadius, mChangingRadius, mDeltaY1, mDeltaY2;
+  int mChangingRadius, mStrokeWidth;
 
   {
+    mStrokeWidth = 50;
+
     mRedRing = new Paint();
     mRedRing.setColor(Color.RED);
     mRedRing.setStyle(Paint.Style.STROKE);
-    mRedRing.setStrokeWidth(50);
+    mRedRing.setStrokeWidth(mStrokeWidth);
 
     mGreenRing = new Paint();
     mGreenRing.setColor(Color.GREEN);
     mGreenRing.setStyle(Paint.Style.STROKE);
-    mGreenRing.setStrokeWidth(50);
+    mGreenRing.setStrokeWidth(mStrokeWidth);
 
     mGrayRing = new Paint();
     mGrayRing.setColor(Color.LTGRAY);
     mGrayRing.setStyle(Paint.Style.STROKE);
-    mGrayRing.setStrokeWidth(50);
+    mGrayRing.setStrokeWidth(mStrokeWidth);
 
     mChangingRadius = 100;
 
@@ -71,9 +73,9 @@ public class FinishBackgroundView extends View {
 
     }
 
-    mChangingRadius = mChangingRadius + 10;
+    mChangingRadius = mChangingRadius + 5;
 
-    if (mChangingRadius < xCenter) {
+    if (mChangingRadius < xCenter - mStrokeWidth) {
       invalidate();
     }
   }

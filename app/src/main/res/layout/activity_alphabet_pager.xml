@@ -29,7 +29,7 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center_vertical|end"
     android:src="@drawable/ic_keyboard_arrow_right"
-    android:contentDescription="@string/previous"
+    android:contentDescription="@string/next"
     android:visibility="visible"/>
 
 

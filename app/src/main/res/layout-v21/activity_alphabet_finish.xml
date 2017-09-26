@@ -17,6 +17,7 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:text="@string/again"
+    android:background="?android:attr/selectableItemBackgroundBorderless"
     />
 
 </FrameLayout>
