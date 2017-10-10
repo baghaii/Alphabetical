@@ -79,4 +79,9 @@ public class FinishBackgroundView extends View {
       invalidate();
     }
   }
+
+  public void resetChangingRadius() {
+    mChangingRadius = 100;
+    invalidate();
+  }
 }

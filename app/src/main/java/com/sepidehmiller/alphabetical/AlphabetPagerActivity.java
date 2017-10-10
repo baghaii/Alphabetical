@@ -16,6 +16,7 @@ public class AlphabetPagerActivity extends AppCompatActivity {
   private AlphabetSoundPlayer mSoundPlayer;
   private View mAlphabetView;
   private View mFinishView;
+  private FinishBackgroundView mFinishBackgroundView;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,7 @@ public class AlphabetPagerActivity extends AppCompatActivity {
 
     mAlphabetView = findViewById(R.id.view_alphabet_pager);
     mFinishView = findViewById(R.id.view_alphabet_finish);
+    mFinishBackgroundView = (FinishBackgroundView) findViewById(R.id.finish_background_view);
     mSoundPlayer = new AlphabetSoundPlayer(getApplicationContext());
 
     mViewPager = (ViewPager) findViewById(R.id.activity_alphabet_pager_view_pager);
@@ -113,6 +115,7 @@ public class AlphabetPagerActivity extends AppCompatActivity {
   }
 
   private void showFinishView() {
+    mFinishBackgroundView.resetChangingRadius();
     mFinishView.setVisibility(View.VISIBLE);
     mAlphabetView.setVisibility(View.GONE);
     mViewPager.setCurrentItem(0, true);
