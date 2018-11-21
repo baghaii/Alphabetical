@@ -6,7 +6,7 @@
   android:id="@+id/view_alphabet_pager"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:background="@color/colorBackground"
+  android:background="@drawable/background_gradient"
   tools:context="com.sepidehmiller.alphabetical.AlphabetPagerActivity">
 
   <android.support.v4.view.ViewPager

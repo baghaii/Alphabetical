@@ -1,6 +1,7 @@
 package com.sepidehmiller.alphabetical;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -31,6 +32,17 @@ public class AlphabetPagerActivity extends AppCompatActivity {
     mViewPager = (ViewPager) findViewById(R.id.activity_alphabet_pager_view_pager);
     final AlphabetPagerAdapter adapter = new AlphabetPagerAdapter(this, mSoundPlayer);
     mViewPager.setAdapter(adapter);
+
+    //http://andraskindler.com/blog/2013/create-viewpager-transitions-a-pagertransformer-example/
+    mViewPager.setPageTransformer(false, new ViewPager.PageTransformer() {
+      @Override
+      public void transformPage(@NonNull View view, float v) {
+        final float normalizedposition = Math.abs(Math.abs(v) - 1);
+        view.setScaleX(normalizedposition / 2 + 0.5f);
+        view.setScaleY(normalizedposition / 2 + 0.5f);
+        view.setRotationY(v * -90);
+      }
+    });
 
     mPrevButton = findViewById(R.id.previous);
     mNextButton = findViewById(R.id.next);
