@@ -12,26 +12,26 @@
   <android.support.v4.view.ViewPager
     android:id="@+id/activity_alphabet_pager_view_pager"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-  </android.support.v4.view.ViewPager>
+    android:layout_height="match_parent"/>
 
-  <ImageButton
+  <ImageView
     android:id="@+id/previous"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="@dimen/button_size"
+    android:layout_height="@dimen/button_size"
     android:layout_gravity="center_vertical"
-    android:src="@drawable/ic_keyboard_arrow_left"
+    android:src="@drawable/ic_left_button"
     android:contentDescription="@string/previous"
+    android:padding="8dp"
     android:visibility="invisible"/>
 
-  <ImageButton
+  <ImageView
     android:id="@+id/next"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="@dimen/button_size"
+    android:layout_height="@dimen/button_size"
     android:layout_gravity="center_vertical|end"
-    android:src="@drawable/ic_keyboard_arrow_right"
+    android:src="@drawable/ic_right_button"
     android:contentDescription="@string/next"
+    android:padding="8dp"
     android:visibility="visible"/>
-
 
   </FrameLayout>

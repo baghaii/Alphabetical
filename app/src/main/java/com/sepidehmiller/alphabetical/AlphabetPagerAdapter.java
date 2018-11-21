@@ -1,7 +1,6 @@
 package com.sepidehmiller.alphabetical;
 
 import android.content.Context;
-import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
@@ -35,8 +34,7 @@ public class AlphabetPagerAdapter extends PagerAdapter {
     LayoutInflater inflater = LayoutInflater.from(mContext);
     TextView layout = (TextView) inflater.inflate(R.layout.textview_alphabet, container, false);
     layout.setText(alphabet);
-    Typeface face = Typeface.createFromAsset(mContext.getAssets(), "fonts/ChalkboardSE.ttc");
-    layout.setTypeface(face);
+    layout.setTypeface(MyApplication.chalkboardType);
 
     final int i = position;
     layout.setOnClickListener(new View.OnClickListener() {
