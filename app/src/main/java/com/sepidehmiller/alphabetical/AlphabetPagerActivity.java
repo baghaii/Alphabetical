@@ -1,5 +1,7 @@
 package com.sepidehmiller.alphabetical;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.view.ViewPager;
@@ -81,8 +83,23 @@ public class AlphabetPagerActivity extends AppCompatActivity {
     mAgainButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        mFinishView.setVisibility(View.GONE);
+        mFinishView.animate()
+            .alpha(0f)
+            .setDuration(2000)
+            .setListener(new AnimatorListenerAdapter() {
+              @Override
+              public void onAnimationEnd(Animator animation) {
+                mFinishView.setVisibility(View.GONE);
+              }
+            });
+
+        mAlphabetView.setAlpha(0f);
         mAlphabetView.setVisibility(View.VISIBLE);
+        mAlphabetView.animate()
+            .alpha(1f)
+            .setDuration(2000)
+            .setListener(null);
+
       }
     });
 
@@ -127,10 +144,35 @@ public class AlphabetPagerActivity extends AppCompatActivity {
   }
 
   private void showFinishView() {
-    mFinishBackgroundView.resetChangingRadius();
+    //This crossfade animation only works on Lollipop and up
+
+    // Animate the loading view to 0% opacity. After the animation ends,
+    // set its visibility to GONE as an optimization step (it won't
+    // participate in layout passes, etc.)
+
+    //https://developer.android.com/training/animation/reveal-or-hide-view
+
+    mAlphabetView.animate()
+        .alpha(0f)
+        .setDuration(2000)
+        .setListener(new AnimatorListenerAdapter() {
+          @Override
+          public void onAnimationEnd(Animator animation) {
+            mAlphabetView.setVisibility(View.GONE);
+            mViewPager.setCurrentItem(0, true);
+          }
+        });
+
+    mFinishView.setAlpha(0f);
     mFinishView.setVisibility(View.VISIBLE);
-    mAlphabetView.setVisibility(View.GONE);
-    mViewPager.setCurrentItem(0, true);
+
+    mFinishView.animate()
+        .alpha(1f)
+        .setDuration(2000)
+        .setListener(null);
+
+    mFinishBackgroundView.resetChangingRadius();
+
   }
 
 }

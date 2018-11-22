@@ -58,9 +58,8 @@ public class FinishBackgroundView extends View {
     int yCenter;
 
 
-    xCenter = canvas.getWidth()/2;
-    yCenter = canvas.getHeight()/2;
-
+    xCenter = getWidth()/2;
+    yCenter = getHeight()/2;
 
     canvas.drawCircle(xCenter, yCenter, mChangingRadius, mRedRing);
 
