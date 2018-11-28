@@ -2,6 +2,9 @@ package com.sepidehmiller.alphabetical;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.app.ActivityManager;
+import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.view.ViewPager;
@@ -29,7 +32,9 @@ public class AlphabetPagerActivity extends AppCompatActivity {
     mAlphabetView = findViewById(R.id.view_alphabet_pager);
     mFinishView = findViewById(R.id.view_alphabet_finish);
     mFinishBackgroundView = (FinishBackgroundView) findViewById(R.id.finish_background_view);
+
     mSoundPlayer = new AlphabetSoundPlayer(getApplicationContext());
+
 
     mViewPager = (ViewPager) findViewById(R.id.activity_alphabet_pager_view_pager);
     final AlphabetPagerAdapter adapter = new AlphabetPagerAdapter(this, mSoundPlayer);
@@ -140,7 +145,20 @@ public class AlphabetPagerActivity extends AppCompatActivity {
   @Override
   protected void onResume() {
     super.onResume();
-    startLockTask();
+    if (!isLocked()) {
+      startLockTask();
+    }
+  }
+
+  private boolean isLocked() {
+    ActivityManager activityManager;
+    activityManager = (ActivityManager) this.getSystemService(Context.ACTIVITY_SERVICE);
+
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+      return activityManager.getLockTaskModeState() != ActivityManager.LOCK_TASK_MODE_NONE;
+    } else {
+      return activityManager.isInLockTaskMode();
+    }
   }
 
   private void showFinishView() {
@@ -175,4 +193,10 @@ public class AlphabetPagerActivity extends AppCompatActivity {
 
   }
 
+  @Override
+  protected void onDestroy() {
+    mSoundPlayer.release();
+    mSoundPlayer = null;
+    super.onDestroy();
+  }
 }

@@ -11,3 +11,7 @@ This is my first independently created Android App. It is a children's app that 
 * Add nicer navigation arrows.
 * Rerecord the sounds to be louder. 
 * Add visually appealing things to AlphabetFinishActivity.
+
+##Known Bugs
+* Wrong sound playing if clicking after rotation. Figure out why.
+* In landscape mode, letters fall off the bottom of the screen. Why?

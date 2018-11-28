@@ -3,6 +3,7 @@ package com.sepidehmiller.alphabetical;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,21 +29,21 @@ public class AlphabetPagerAdapter extends PagerAdapter {
 
   @NonNull
   @Override
-  public Object instantiateItem(@NonNull ViewGroup container, int position) {
-    String alphabet = mAlphabet[position];
+  public Object instantiateItem(@NonNull ViewGroup container, final int position) {
+    final String alphabet = mAlphabet[position];
 
     LayoutInflater inflater = LayoutInflater.from(mContext);
     TextView layout = (TextView) inflater.inflate(R.layout.textview_alphabet, container, false);
     layout.setText(alphabet);
     layout.setTypeface(MyApplication.chalkboardType);
 
-    final int i = position;
+    final Sound sound = mSoundPlayer.getSounds().get(position);
     layout.setOnClickListener(new View.OnClickListener() {
 
       @Override
       public void onClick(View view) {
-
-        mSoundPlayer.play(mSoundPlayer.getSounds().get(i));
+        Log.i("sepidehh", alphabet + " "  + position);
+        mSoundPlayer.play(sound);
 
       }
     });
@@ -51,6 +52,8 @@ public class AlphabetPagerAdapter extends PagerAdapter {
 
     return layout;
   }
+
+
 
   @Override
   public int getCount() {
