@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <!-- textview_alphabet.xml -->
+  <dimen name="letter_size">400sp</dimen>
+</resources>

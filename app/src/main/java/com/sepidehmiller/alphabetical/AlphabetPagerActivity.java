@@ -36,8 +36,8 @@ public class AlphabetPagerActivity extends AppCompatActivity {
     mSoundPlayer = new AlphabetSoundPlayer(getApplicationContext());
 
 
-    mViewPager = (ViewPager) findViewById(R.id.activity_alphabet_pager_view_pager);
-    final AlphabetPagerAdapter adapter = new AlphabetPagerAdapter(this, mSoundPlayer);
+    mViewPager = findViewById(R.id.activity_alphabet_pager_view_pager);
+    final AlphabetPagerAdapter adapter = new AlphabetPagerAdapter(mSoundPlayer);
     mViewPager.setAdapter(adapter);
 
     //http://andraskindler.com/blog/2013/create-viewpager-transitions-a-pagertransformer-example/
@@ -190,7 +190,6 @@ public class AlphabetPagerActivity extends AppCompatActivity {
         .setListener(null);
 
     mFinishBackgroundView.resetChangingRadius();
-
   }
 
   @Override
@@ -199,4 +198,5 @@ public class AlphabetPagerActivity extends AppCompatActivity {
     mSoundPlayer = null;
     super.onDestroy();
   }
+
 }

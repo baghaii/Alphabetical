@@ -21,7 +21,7 @@
     android:layout_gravity="center_vertical"
     android:src="@drawable/ic_left_button"
     android:contentDescription="@string/previous"
-    android:padding="8dp"
+    android:padding="@dimen/padding"
     android:visibility="invisible"/>
 
   <ImageView
@@ -31,7 +31,7 @@
     android:layout_gravity="center_vertical|end"
     android:src="@drawable/ic_right_button"
     android:contentDescription="@string/next"
-    android:padding="8dp"
+    android:padding="@dimen/padding"
     android:visibility="visible"/>
 
   </FrameLayout>

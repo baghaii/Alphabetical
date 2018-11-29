@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <!-- activity_alphabet_pager.xml -->
   <dimen name="button_size">64dp</dimen>
+  <dimen name="padding">8dp</dimen>
+
+  <!-- textview_alphabet.xml -->
+  <dimen name="letter_size">200sp</dimen>
 </resources>
