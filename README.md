@@ -10,5 +10,5 @@ This is my first independently created Android App. It is a children's app that 
 ## Future Areas of expansion 
 * Add visually appealing things to AlphabetFinishActivity.
 
-##Known Bugs
+## Known Bugs
 * In landscape mode, letters fall off the bottom of the screen if larger than 200sp. Why?
